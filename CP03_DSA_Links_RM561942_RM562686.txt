@@ -1,0 +1,20 @@
+Checkpoint 3 - Data Science & Analytics (2º semestre de 2026)
+Dashboard: Mortalidade no trânsito no Estado de São Paulo
+
+Integrantes:
+Rogério Deligi Ferreira Filho - RM561942
+Maria Fernanda Garavelli Dantas - RM562686
+
+Aplicação publicada (acesso público, sem instalação):
+https://rogeriooxy.github.io/fiap-dsa-cp3-transito-sp/
+(Streamlit rodando no navegador com stlite; a primeira abertura leva de 20 a 60 segundos)
+
+Repositório com o código-fonte e as instruções de execução local (README.md):
+https://github.com/RogerioOxy/fiap-dsa-cp3-transito-sp
+
+Execução local:
+pip install -r requirements.txt
+streamlit run app.py
+
+O notebook CP03_DSA_Dashboard_MortalidadeTransitoSP_RM561942_RM562686.ipynb (todas as células executadas) gera as tabelas
+que a dashboard usa e treina os três modelos da análise preditiva (regressão logística, LightGBM e rede neural MLP).

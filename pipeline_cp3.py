@@ -168,6 +168,14 @@ for col in ["turno", "tipo_via", "tipo_local", "tp_sinistro_primario", "administ
 nd_flag = base["tp_sinistro_nao_disponivel"].eq("S")
 print(f"  tp_sinistro_nao_disponivel = S: {nd_flag.sum():,} linhas, {base.loc[nd_flag, 'fatal'].mean():.1%} fatais")
 
+# %% [markdown]
+# **Decisão a partir da conferência acima:**
+# - `turno` e `tipo_via` = `NAO DISPONIVEL` (100% e 98% fatais): linhas removidas, pois a ausência é o próprio fluxo de cadastro do fatal.
+# - `tp_sinistro_nao_disponivel` (0% fatais): coluna removida, pelo motivo inverso (marca registro sem classificação, nunca fatal).
+# - `circunscricao` (39%) e `administracao` (14%) = `NAO DISPONIVEL` estão acima da média, mas longe de determinar o alvo e somam
+#   menos de 2,5% das linhas: mantidos como categoria própria, com essa ressalva registrada.
+# - `tipo_local` e `tp_sinistro_primario` = `NAO DISPONIVEL` ficam abaixo da média: mantidos como categoria própria.
+
 # %%
 base = base[(base["turno"] != "NAO DISPONIVEL") & (base["tipo_via"] != "NAO DISPONIVEL")].copy()
 base["hora"] = pd.to_numeric(base["hora_sinistro"].str.slice(0, 2), errors="coerce").fillna(-1).astype(int)
