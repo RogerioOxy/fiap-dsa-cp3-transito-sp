@@ -1,0 +1,10 @@
+{
+  "base_modelagem_linhas": 926282,
+  "base_modelagem_taxa_fatal": 0.03844941389339316,
+  "treino_linhas": 250000,
+  "teste_linhas": 185257,
+  "taxa_2020": 10.460293303426948,
+  "taxa_2025": 13.291581203607905,
+  "meta_2025": 7.845219977570211,
+  "vidas_acima_meta_2025": 2509.78134192385
+}

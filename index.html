@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Trânsito SP | Mortalidade</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@1.9.2/build/stlite.css" />
+    <style>
+      #aviso { font-family: sans-serif; padding: 24px; color: #333; }
+    </style>
+  </head>
+  <body>
+    <div id="aviso">Carregando a dashboard (Streamlit rodando no navegador). A primeira abertura leva de 20 a 60 segundos.</div>
+    <div id="root"></div>
+    <script type="module">
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@1.9.2/build/stlite.js";
+      const arquivos = ["app_dados/cubo.csv", "app_dados/pop_regiao.csv", "app_dados/municipios.csv", "app_dados/anual.csv",
+        "app_dados/metricas.csv", "app_dados/roc.csv", "app_dados/pr.csv", "app_dados/importancias.csv",
+        "app_dados/cenarios.csv", "app_dados/resumo.json", "app_dados/municipios_sp.geojson",
+        "assets/serie_taxa.png", "assets/moto_participacao.png", "assets/comparacao_modelos.png"];
+      const files = { "app.py": { url: "./app.py" } };
+      for (const a of arquivos) files[a] = { url: "./" + a };
+      document.getElementById("aviso").remove();
+      mount({ requirements: ["plotly"], entrypoint: "app.py", files }, document.getElementById("root"));
+    </script>
+  </body>
+</html>
